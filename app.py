@@ -168,6 +168,7 @@ st.pyplot(fig)
 
 # ----------------------------------
 
+
 st.header("Distribución del estado de las nacientes")
 st.markdown("""El gráfico muestra el estado de protección de las nacientes registradas en el sistema. Se observa que el 80 % de las nacientes se encuentran protegidas, mientras que el 20 % están desprotegidas. Estos resultados reflejan un nivel favorable de conservación de las fuentes de agua; sin embargo, la existencia de nacientes sin protección evidencia la necesidad de implementar acciones de manejo y conservación para reducir riesgos de contaminación o afectación de la calidad y disponibilidad del recurso hídrico.""")
 
@@ -239,9 +240,25 @@ st.markdown("""Este mapa de puntos muestra la ubicación geográfica de los prin
 
 import geopandas as gpd
 
+# Filtro sencillo en sidebar
+tipos = sorted(df["Tipo de componente"].dropna().unique())
+
+tipo_sel = st.sidebar.selectbox(
+    "Tipo de componente",
+    ["(Todos)"] + tipos
+)
+
+# Aplicar filtro
+datos = df.copy()
+
+if tipo_sel != "(Todos)":
+    datos = datos[datos["Tipo de componente"] == tipo_sel]
+
+
+
 # Cargar datos
 df = pd.read_csv(
-    "https://raw.githubusercontent.com/Yaha14/Tarea2/refs/heads/main/tarea.csv"
+    "https://raw.githubusercontent.com/Yaha14/hola-streamlit/refs/heads/main/tarea.csv"
 )
 
 # Crear mapa base
@@ -311,111 +328,4 @@ m.get_root().html.add_child(folium.Element(legend_html))
 st_folium(m, width=700, height=500)
 
 # ----------------------------------
-
-st.header("Mapa de concentración de consumo por sector")
-st.markdown("""Este mapa representa la distribución espacial del consumo promedio de agua por sector dentro del área de estudio. Mediante una clasificación por rangos de consumo, se identifican las zonas con mayor y menor demanda del recurso hídrico. Los sectores con tonalidades más intensas corresponden a consumos promedio más elevados, mientras que los tonos más claros representan sectores con menor consumo.
-
-El análisis espacial evidencia variaciones en los patrones de consumo entre sectores, destacando a Santa Rosa y El Roble como las áreas con mayores niveles de consumo promedio""")
-
-# Cargar sectores
-sectores_gdf = gpd.read_file(
-    "https://raw.githubusercontent.com/Yaha14/hola-streamlit/refs/heads/main/sectores.json"
-)
-
-# Convertir CRS si es necesario
-if sectores_gdf.crs != "EPSG:4326":
-    sectores_gdf = sectores_gdf.to_crs("EPSG:4326")
-
-# Cargar datos
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/Yaha14/hola-streamlit/refs/heads/main/tarea.csv"
-)
-
-# Filtrar usuarios
-usuarios = df[df["Tipo de componente"] == "Usuario"]
-
-# Consumo promedio por sector
-consumo_sector = (
-    usuarios.groupby("Sector")["Consumo/dia (l)"]
-    .mean()
-    .reset_index()
-    .rename(columns={"Consumo/dia (l)": "consumo_promedio"})
-)
-
-# Unir datos
-sectores_mapa = sectores_gdf.merge(
-    consumo_sector,
-    left_on="Sector_nombre",
-    right_on="Sector",
-    how="left"
-)
-
-# Crear mapa base
-m = folium.Map(
-    location=[9.35, -83.75],
-    zoom_start=14,
-    tiles="CartoDB positron"
-)
-
-# Estilo de polígonos
-def estilo(feature):
-    consumo = feature["properties"].get("consumo_promedio")
-
-    if consumo is None or pd.isna(consumo):
-        color = "lightgray"
-    elif consumo < 550:
-        color = "green"
-    elif consumo < 650:
-        color = "orange"
-    else:
-        color = "red"
-
-    return {
-        "fillColor": color,
-        "color": "black",
-        "weight": 2,
-        "fillOpacity": 0.7
-    }
-
-# Agregar polígonos
-folium.GeoJson(
-    sectores_mapa,
-    style_function=estilo,
-    tooltip=folium.GeoJsonTooltip(
-        fields=["Sector_nombre", "consumo_promedio"],
-        aliases=["Sector:", "Consumo promedio (L/día):"]
-    )
-).add_to(m)
-
-# Leyenda
-legend_html = """
-<div style="
-position: fixed;
-bottom: 50px;
-left: 50px;
-width: 250px;
-background-color: white;
-border:2px solid black;
-padding:10px;
-z-index:9999;
-font-size:14px;
-">
-
-<b>Consumo promedio diario</b><br><br>
-
-<span style="color:green;">■</span> Menor a 550 L/día<br>
-<span style="color:orange;">■</span> Entre 550 y 650 L/día<br>
-<span style="color:red;">■</span> Mayor a 650 L/día<br>
-<span style="color:lightgray;">■</span> Sin datos
-
-</div>
-"""
-
-m.get_root().html.add_child(folium.Element(legend_html))
-
-# Mostrar en Streamlit
-st_folium(m, width=700, height=500)
-
-
-
 
