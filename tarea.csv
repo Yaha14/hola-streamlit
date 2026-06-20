@@ -1,0 +1,71 @@
+﻿Tipo de componente,ID,Nombre,Sector,Latitud,Longitud,Estado,Capacidad l/d,Consumo/dia (l)
+Usuario,287,Roberto Acuna,Cementerio,9.372100,-83.744500,Activo,0,800
+Naciente,147,Naciente madre,Santa Rosa,9.374200,-83.746300,Protegida,1450000,0
+Tuber¡a,L1,L¡nea madre,El Roble,9.370780,-83.748260,Deteriorada,563404,0
+Tanque,T1,Tanque principal,El Silencio,9.373800,-83.750100,Regular,650000,0
+Usuario,1000,Juan Perez,Santa Rosa,9.375400,-83.745900,Activo,0,450
+Naciente,201,Naciente Norte,El Roble,9.369500,-83.747000,Protegida,1200000,0
+Tanque,T2,Tanque central,Villa Nueva,9.368900,-83.742800,Regular,850000,0
+Tuber¡a,L2,L¡nea secundaria,Cementerio,9.371600,-83.744000,Regular,450000,0
+Usuario,1001,Maria Lopez,Berlin,9.367200,-83.741500,Activo,0,700
+Naciente,202,Naciente Sur,Santa Rosa,9.374800,-83.746800,Desprotegida,980000,0
+Tanque,T3,Tanque reserva,El Silencio,9.373500,-83.749400,Activo,720000,0
+Tuber¡a,L3,L¡nea norte,El Roble,9.370300,-83.748700,Deteriorada,510000,0
+Usuario,1002,Carlos Ruiz,Villa Nueva,9.368200,-83.742100,Activo,0,380
+Naciente,203,Naciente Central,Berlin,9.367000,-83.741900,Protegida,1340000,0
+Tanque,T4,Tanque comunal,Cementerio,9.372900,-83.744700,Regular,610000,0
+Tuber¡a,L4,L¡nea sur,Santa Rosa,9.374100,-83.746100,Regular,390000,0
+Usuario,1003,Ana Torres,El Roble,9.370600,-83.748000,Activo,0,820
+Naciente,204,Naciente Alta,Villa Nueva,9.368500,-83.742600,Protegida,1500000,0
+Tanque,T5,Tanque secundario,Berlin,9.367500,-83.741700,Activo,930000,0
+Tuber¡a,L5,L¡nea madre,Cementerio,9.372300,-83.744300,Deteriorada,580000,0
+Usuario,1004,Luis Morales,Santa Rosa,9.375100,-83.746000,Activo,0,520
+Usuario,1005,Sofia Rojas,El Roble,9.370900,-83.748500,Activo,0,610
+Usuario,1006,Pedro Vargas,Berlin,9.367300,-83.741800,Activo,0,450
+Usuario,1007,Elena Castro,Villa Nueva,9.368700,-83.742400,Activo,0,700
+Usuario,1008,Miguel Herrera,Cementerio,9.372400,-83.744600,Activo,0,390
+Usuario,1009,Lucia Jimenez,El Silencio,9.373600,-83.749800,Activo,0,560
+Usuario,1010,Andres Acosta,Santa Rosa,9.374600,-83.746500,Activo,0,830
+Usuario,1011,Camila Ruiz,El Roble,9.370500,-83.748100,Activo,0,410
+Usuario,1012,Daniel Gomez,Berlin,9.367100,-83.741600,Activo,0,600
+Usuario,1013,Fernanda Solis,Villa Nueva,9.368300,-83.742000,Activo,0,710
+Usuario,1014,Ricardo Mena,Cementerio,9.372700,-83.744400,Activo,0,350
+Usuario,1015,Karla Chaves,El Silencio,9.373900,-83.750000,Activo,0,500
+Usuario,1016,Jose Araya,Santa Rosa,9.374300,-83.746200,Activo,0,640
+Usuario,1017,Melissa Ure¤a,El Roble,9.370400,-83.748300,Activo,0,720
+Usuario,1018,Hector Navarro,Berlin,9.367400,-83.741400,Activo,0,480
+Usuario,1019,Patricia Rojas,Villa Nueva,9.368100,-83.742500,Activo,0,810
+Usuario,1020,Cristian Campos,Cementerio,9.372500,-83.744200,Activo,0,550
+Usuario,1021,Natalia Arias,El Silencio,9.373700,-83.749600,Activo,0,460
+Usuario,1022,Oscar Delgado,Santa Rosa,9.374900,-83.746700,Activo,0,770
+Usuario,1023,Monica Leon,El Roble,9.370700,-83.748600,Activo,0,590
+Usuario,1024,Javier Pineda,Berlin,9.367600,-83.741900,Activo,0,620
+Usuario,1025,Diana Vargas,Villa Nueva,9.368400,-83.742700,Activo,0,690
+Usuario,1026,Esteban Mora,Cementerio,9.372800,-83.744100,Activo,0,530
+Usuario,1027,Silvia Salazar,El Silencio,9.373400,-83.749500,Activo,0,470
+Usuario,1028,Gabriel Rojas,Santa Rosa,9.374500,-83.746400,Activo,0,840
+Usuario,1029,Paola Herrera,El Roble,9.370200,-83.748200,Activo,0,660
+Usuario,1030,Martin Solano,Berlin,9.367800,-83.741300,Activo,0,580
+Usuario,1031,Andrea Chacon,Villa Nueva,9.368600,-83.742900,Activo,0,760
+Usuario,1032,Raul Jimenez,Cementerio,9.372600,-83.744800,Activo,0,490
+Usuario,1033,Lorena Vega,El Silencio,9.373300,-83.749700,Activo,0,610
+Usuario,1034,Cesar Quesada,Santa Rosa,9.374700,-83.746600,Activo,0,570
+Usuario,1035,Vanessa Mora,El Roble,9.370100,-83.748400,Activo,0,800
+Usuario,1036,Ronald Castro,Berlin,9.367900,-83.741200,Activo,0,430
+Usuario,1037,Alejandra Soto,Villa Nueva,9.368800,-83.742300,Activo,0,740
+Usuario,1038,Diego Mendez,Cementerio,9.372200,-83.744900,Activo,0,520
+Usuario,1039,Carolina Perez,El Silencio,9.373100,-83.749900,Activo,0,690
+Usuario,1040,Fabian Leon,Santa Rosa,9.374000,-83.746900,Activo,0,620
+Usuario,1041,Mariana Arias,El Roble,9.370300,-83.748800,Activo,0,570
+Usuario,1042,Rodrigo Solis,Berlin,9.367500,-83.741100,Activo,0,760
+Usuario,1043,Daniela Campos,Villa Nueva,9.368000,-83.742200,Activo,0,610
+Usuario,1044,Sergio Vargas,Cementerio,9.372000,-83.744000,Activo,0,480
+Usuario,1045,Paula Jimenez,El Silencio,9.373200,-83.749300,Activo,0,730
+Usuario,1046,Kevin Morales,Santa Rosa,9.374400,-83.746100,Activo,0,540
+Usuario,1047,Laura Chaves,El Roble,9.370800,-83.748900,Activo,0,680
+Usuario,1048,Mauricio Rojas,Berlin,9.367700,-83.741000,Activo,0,590
+Usuario,1049,Adriana Vega,Villa Nueva,9.368900,-83.742600,Activo,0,820
+Usuario,1050,Victor Navarro,Cementerio,9.372900,-83.744500,Activo,0,510
+Usuario,1051,Jessica Solano,El Silencio,9.373000,-83.749200,Activo,0,640
+Usuario,1052,Carlos Ure¤a,Santa Rosa,9.374100,-83.746800,Activo,0,750
+Usuario,1053,Erika Castro,El Roble,9.370600,-83.748700,Activo,0,560
