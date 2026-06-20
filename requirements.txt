@@ -1,6 +1,7 @@
 streamlit
 pandas
-plotly
-geopandas
+matplotlib
 folium
 streamlit-folium
+plotly
+geopandas
