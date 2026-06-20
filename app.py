@@ -99,7 +99,6 @@ datos = cargar_datos()
 
 # ----------------------------------
 # Filtro lateral
-# ----------------------------------
 categorias = sorted(datos["Tipo de componente"].unique())
 
 seleccion = st.sidebar.selectbox(
@@ -113,17 +112,6 @@ else:
     datos_filtrados = datos[
         datos["Tipo de componente"] == seleccion
     ]
-
-# ----------------------------------
-# Tabla de datos
-# ----------------------------------
-st.header("📋 Datos")
-
-st.dataframe(
-    datos_filtrados,
-    use_container_width=True,
-    hide_index=True
-)
 
 st.header ("Cantidad de usuarios por sector")
 st.markdown("""La tabla muestra la cantidad de usuarios registrados en cada sector del sistema de acueducto.
@@ -219,15 +207,17 @@ m = folium.Map(
     tiles="CartoDB Positron"
 )
 
-# Colores por tipo de componente
 colores = {
     "Usuario": "blue",
     "Tanque": "red",
-    "Tubería": "green"
+    "Tubería": "green",
+    "Naciente": "orange"
 }
 
-# Agregar elementos
-for _, registro in df.iterrows():
+for _, registro in datos_filtrados.iterrows():
+
+    if pd.isna(registro["Latitud"]) or pd.isna(registro["Longitud"]):
+        continue
 
     tipo = registro["Tipo de componente"]
     color = colores.get(tipo, "gray")
@@ -239,15 +229,12 @@ for _, registro in df.iterrows():
         fill=True,
         fill_color=color,
         fill_opacity=0.8,
-        tooltip=f"{tipo}",
-        popup=folium.Popup(
-            f"""
-            <b>Tipo:</b> {tipo}<br>
-            <b>Sector:</b> {registro['Sector']}<br>
-            <b>ID:</b> {registro['ID']}
-            """,
-            max_width=250
-        )
+        tooltip=tipo,
+        popup=f"""
+        <b>Tipo:</b> {tipo}<br>
+        <b>Sector:</b> {registro['Sector']}<br>
+        <b>ID:</b> {registro['ID']}
+        """
     ).add_to(m)
 
 # Leyenda
@@ -273,10 +260,12 @@ font-size:14px;
 </div>
 """
 
+
 m.get_root().html.add_child(folium.Element(legend_html))
 
-# Mostrar en Streamlit
 st_folium(m, width=700, height=500)
+
+
 
 # ----------------------------------
 
