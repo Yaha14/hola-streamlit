@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+conda install matplotlib
 import matplotlib.pyplot as plt
 import folium
 from streamlit_folium import st_folium
@@ -198,61 +199,12 @@ ax.set_title("Distribución de estados de las nacientes")
 st.pyplot(fig)
 
 # ----------------------------------
-
-st.header("Promedio de consumo diario por sector")
-st.markdown("""El gráfico compara el consumo promedio diario de agua entre los diferentes sectores abastecidos por el acueducto. Se observa que Villa Nueva presenta el mayor consumo promedio, con aproximadamente 690 litros por día, seguido por Santa Rosa con cerca de 650 litros diarios. Por el contrario, el sector Cementerio registra el menor consumo promedio, con aproximadamente 510 litros por día. Los sectores Berlín, El Silencio y El Roble muestran valores intermedios. Estas diferencias pueden estar asociadas a factores como la cantidad de usuarios atendidos, las actividades desarrolladas en cada sector o los hábitos de consumo de la población.""")
-
-import matplotlib.pyplot as plt
-import streamlit as st
-
-# Filtrar usuarios
-usuarios = df[df["Tipo de componente"] == "Usuario"]
-
-# Crear figura
-fig, ax = plt.subplots(figsize=(8, 5))
-
-# Boxplot por sector
-usuarios.boxplot(
-    column="Consumo/dia (l)",
-    by="Sector",
-    grid=False,
-    ax=ax
-)
-
-# Títulos y etiquetas
-ax.set_title("Distribución del consumo diario por sector")
-ax.set_xlabel("Sector")
-ax.set_ylabel("Consumo diario (litros/día)")
-
-# Quitar título automático de pandas
-plt.suptitle("")
-
-# Rotar etiquetas del eje X
-plt.xticks(rotation=45)
-
-# Mostrar en Streamlit
-st.pyplot(fig)
-
 # ----------------------------------
 
 st.header("Mapa de puntos de ubicación de componentes de la ASADA")
 st.markdown("""Este mapa de puntos muestra la ubicación geográfica de los principales componentes del sistema de abastecimiento de agua administrado por la ASADA, incluyendo usuarios, tanques de almacenamiento. La simbología empleada permite diferenciar cada tipo de componente y visualizar su distribución dentro del área de estudio. Se observa una mayor concentración de usuarios en los sectores poblados, mientras que los tanques se localizan en puntos estratégicos para garantizar la distribución del recurso hídrico. Este mapa facilita la identificación de la infraestructura existente, el análisis de la cobertura del servicio y la planificación de actividades de mantenimiento, expansión y gestión del sistema.""")
 
 import geopandas as gpd
-
-# Filtro sencillo en sidebar
-tipos = sorted(df["Tipo de componente"].dropna().unique())
-
-tipo_sel = st.sidebar.selectbox(
-    "Tipo de componente",
-    ["(Todos)"] + tipos
-)
-
-# Aplicar filtro
-datos = df.copy()
-
-if tipo_sel != "(Todos)":
-    datos = datos[datos["Tipo de componente"] == tipo_sel]
 
 
 
